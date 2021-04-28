@@ -4,26 +4,23 @@ interactive -p quanah
 # move to directory
 cd /lustre/scratch/jmanthey/33_albertine/04_filtered_vcf_admixture
 
-# get vcf header
-grep "#" batis_CM001999.1__c.recode.vcf > header.vcf
-
 # remove Z chromosome files
 rm *CM002017.1*
 
 # batis -> make one vcf
-cp header.vcf batis.vcf
+grep "#" batis_CM001999.1__c.recode.vcf > batis.vcf
 for i in $( ls batis*recode.vcf ); do grep -v "#" $i >> batis.vcf; done
 
 # chamaetylas -> make one vcf
-cp header.vcf chamaetylas.vcf
+grep "#" chamaetylas_CM001999.1__c.recode.vcf > chamaetylas.vcf
 for i in $( ls chamaetylas*recode.vcf ); do grep -v "#" $i >> chamaetylas.vcf; done
 
 # cossypha -> make one vcf
-cp header.vcf cossypha.vcf
+grep "#" cossypha_CM001999.1__c.recode.vcf > cossypha.vcf
 for i in $( ls cossypha*recode.vcf ); do grep -v "#" $i >> cossypha.vcf; done
 
 # phylloscopus -> make one vcf
-cp header.vcf phylloscopus.vcf
+grep "#" phylloscopus_CM001999.1__c.recode.vcf > phylloscopus.vcf
 for i in $( ls phylloscopus*recode.vcf ); do grep -v "#" $i >> phylloscopus.vcf; done
 
 # make chromosome map for the vcfs
@@ -52,4 +49,8 @@ grep -h CV log_batis_*.out
 grep -h CV log_chamaetylas_*.out
 grep -h CV log_cossypha_*.out
 grep -h CV log_phylloscopus_*.out
+
+
+
+
 
